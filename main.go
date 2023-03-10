@@ -31,8 +31,8 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/healthz"
 	"sigs.k8s.io/controller-runtime/pkg/log/zap"
 
-	k1v1beta1 "github.com/kubefirst/kubefirst-watcher-operator/api/v1beta1"
-	"github.com/kubefirst/kubefirst-watcher-operator/controllers"
+	k1v1beta1 "github.com/kxdroid/k8s-watcher-operator/api/v1beta1"
+	"github.com/kxdroid/k8s-watcher-operator/controllers"
 	//+kubebuilder:scaffold:imports
 )
 

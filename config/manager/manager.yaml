@@ -72,14 +72,14 @@ spec:
         - --leader-elect
         image: controller:latest
         name: manager
-        env: 
+        env:
         - name: JOB_IMAGE
-          value: "6zar/k1test:latest"          
+          value: "6zar/k8s-watcher:latest"
         securityContext:
           allowPrivilegeEscalation: false
           capabilities:
             drop:
-              - "ALL"
+            - "ALL"
         livenessProbe:
           httpGet:
             path: /healthz

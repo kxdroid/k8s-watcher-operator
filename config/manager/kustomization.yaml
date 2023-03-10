@@ -2,6 +2,6 @@ resources:
 - manager.yaml
 
 images:
-  - name: controller:latest
-    newName: 6zar/k1-watcher-contoller
-    newTag: latest
+- name: controller:latest
+  newName: 6zar/k8s-watcher-controller
+  newTag: latest

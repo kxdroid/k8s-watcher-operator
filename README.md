@@ -112,7 +112,7 @@ spec:
     targetRevision: 0.4.0
     helm:
       values: |-
-        image: 6zar/k1-watcher-contoller:latest
+        image: 6zar/k8s-watcher-controller:latest
     chart: helm-k1-watcher-operator
   destination:
     server: 'https://kubernetes.default.svc'

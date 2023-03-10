@@ -1,4 +1,4 @@
-module github.com/kubefirst/kubefirst-watcher-operator
+module github.com/kxdroid/k8s-watcher-operator
 
 go 1.19
 

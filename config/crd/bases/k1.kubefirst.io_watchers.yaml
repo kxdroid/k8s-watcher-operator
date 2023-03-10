@@ -61,11 +61,16 @@ spec:
                     namespace:
                       type: string
                   required:
-                  - name
                   - namespace
                   type: object
                 type: array
+              delay:
+                description: Delay how long will be waited after all conditions are
+                  met before finalizing the pod evaluating it
+                format: int32
+                type: integer
               deployments:
+                description: Not supported yet, to observe wacthers Watchers     []WatcherCondition            `json:"watchers,omitempty"`
                 items:
                   description: DeploymentCondition deployment matching rules
                   properties:
@@ -94,12 +99,12 @@ spec:
                       format: int32
                       type: integer
                   required:
-                  - name
                   - namespace
                   type: object
                 type: array
               exit:
-                description: Quantity of instances
+                description: Exit What exit code used by the pod that check when the
+                  condition is reached.
                 format: int32
                 type: integer
               jobs:
@@ -135,7 +140,6 @@ spec:
                       format: int32
                       type: integer
                   required:
-                  - name
                   - namespace
                   type: object
                 type: array
@@ -160,7 +164,6 @@ spec:
                     phase:
                       type: string
                   required:
-                  - name
                   - namespace
                   type: object
                 type: array
@@ -183,7 +186,6 @@ spec:
                     namespace:
                       type: string
                   required:
-                  - name
                   - namespace
                   type: object
                 type: array
@@ -206,11 +208,10 @@ spec:
                     namespace:
                       type: string
                   required:
-                  - name
                   - namespace
                   type: object
                 type: array
-              statefulSets:
+              statefulsets:
                 items:
                   description: StatefulSetCondition deployment matching rules
                   properties:
@@ -239,36 +240,16 @@ spec:
                       format: int32
                       type: integer
                   required:
-                  - name
                   - namespace
                   type: object
                 type: array
               timeout:
+                description: Timeout How long it will be waited in seconds before
+                  failing the pod trying to evaluate a condition
                 format: int32
                 type: integer
-              watchers:
-                items:
-                  description: WatcherCondition watcher matching rules
-                  properties:
-                    id:
-                      type: integer
-                    labels:
-                      additionalProperties:
-                        type: string
-                      type: object
-                    name:
-                      type: string
-                    namespace:
-                      type: string
-                    status:
-                      description: Condition of the Watcher
-                      type: string
-                  required:
-                  - name
-                  - namespace
-                  type: object
-                type: array
             required:
+            - delay
             - exit
             - timeout
             type: object
