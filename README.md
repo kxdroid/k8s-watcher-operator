@@ -12,18 +12,14 @@ In order to simplify in a single place all the tools needed to create a controll
 To use it is just run: 
 ```bash 
 #Build Container
-docker build . -t kubebuilder
-
-#Use Container
 docker run --rm -it \
-    --name gitlab-bash \
-    -v $HOME/.aws:/root/.aws \
+    --name kubebuilder \
     -w /go/src \
     -v operator-sdk:/go/pkg \
     -v $(pwd):/go/src \
     -v /var/run/docker.sock:/var/run/docker.sock  \
     --privileged \
-    kubebuilder
+    6zar/kubebuilder
 ```
 This container has `--rm` on the run flags, so be aware that everything  out of `/go/src` will removed once you exit the container and you can't recover it. Feel free to map more folders to make easier for your to work with it. 
 
@@ -91,7 +87,7 @@ return hs
 kubectl patch configmap/argocd-cm \
   -n argocd \
   --type merge \
-  -p '{"data":{"resource.customizations.health.k1.kubefirst.io_Watcher":"hs = {}\nif obj.status ~= nil then\n  if obj.status.status ~= nil then\n    if obj.status.status == \"Satisfied\" then\n        hs.status = \"Healthy\"\n        hs.message = obj.status.status\n        return hs\n     end\n     if obj.status.status == \"Timeout\" then\n        hs.status = \"Degraded\"\n        hs.message = obj.status.status\n        return hs\n     end\n  end\nend\nhs.status = \"Progressing\"\nhs.message = \"Waiting for Watcher\"\nreturn hs"} }'
+  -p '{"data":{"resource.customizations.health.kxdroid.github.io_Watcher":"hs = {}\nif obj.status ~= nil then\n  if obj.status.status ~= nil then\n    if obj.status.status == \"Satisfied\" then\n        hs.status = \"Healthy\"\n        hs.message = obj.status.status\n        return hs\n     end\n     if obj.status.status == \"Timeout\" then\n        hs.status = \"Degraded\"\n        hs.message = obj.status.status\n        return hs\n     end\n  end\nend\nhs.status = \"Progressing\"\nhs.message = \"Waiting for Watcher\"\nreturn hs"} }'
 ```
 
 
@@ -101,7 +97,7 @@ kubectl patch configmap/argocd-cm \
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: k1-watcher
+  name: k8s-watcher
   namespace: argocd
   annotations:
     argocd.argoproj.io/sync-wave: "1"
@@ -113,7 +109,7 @@ spec:
     helm:
       values: |-
         image: 6zar/k8s-watcher-controller:latest
-    chart: helm-k1-watcher-operator
+    chart: helm-k8s-watcher-operator
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: watcher-system
@@ -152,7 +148,7 @@ spec:
           kubectl patch configmap/argocd-cm \
             -n argocd \
             --type merge \
-            -p '{"data":{"resource.customizations.health.k1.kubefirst.io_Watcher":"hs = {}\nif obj.status ~= nil then\n  if obj.status.status ~= nil then\n    if obj.status.status == \"Satisfied\" then\n        hs.status = \"Healthy\"\n        hs.message = obj.status.status\n        return hs\n     end\n     if obj.status.status == \"Timeout\" then\n        hs.status = \"Degraded\"\n        hs.message = obj.status.status\n        return hs\n     end\n  end\nend\nhs.status = \"Progressing\"\nhs.message = \"Waiting for Watcher\"\nreturn hs"} }'
+            -p '{"data":{"resource.customizations.health.kxdroid.github.io_Watcher":"hs = {}\nif obj.status ~= nil then\n  if obj.status.status ~= nil then\n    if obj.status.status == \"Satisfied\" then\n        hs.status = \"Healthy\"\n        hs.message = obj.status.status\n        return hs\n     end\n     if obj.status.status == \"Timeout\" then\n        hs.status = \"Degraded\"\n        hs.message = obj.status.status\n        return hs\n     end\n  end\nend\nhs.status = \"Progressing\"\nhs.message = \"Waiting for Watcher\"\nreturn hs"} }'
           sleep 10
       restartPolicy: Never
   backoffLimit: 1          
@@ -166,7 +162,7 @@ Use [kuebfirst](https://github.com/kubefirst/kubefirst) to have all gitops env r
 ./kubefirst local --gitops-branch main --skip-metaphor
 ```
 Once all is done:
-- Add to your github user repo `gitops` at `/registry/k1-demo.yaml`: 
+- Add to your github user repo `gitops` at `/registry/k8s-demo.yaml`: 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
@@ -181,11 +177,11 @@ spec:
           env: k1
   template:
     metadata:
-      name: 'k1-watcher-demo'
+      name: 'k8s-watcher-demo'
     spec:
       project: default
       source:
-        repoURL: https://github.com/6za/k1-watcher-demo.git
+        repoURL: https://github.com/6za/k8s-watcher-demo.git
         targetRevision: HEAD
         path: watcher
       destination:

@@ -8,8 +8,8 @@ resources:
     crdVersion: v1
     namespaced: true
   controller: true
-  domain: kubefirst.io
-  group: k1
+  domain: github.io
+  group: kxdroid
   kind: Watcher
   path: github.com/kxdroid/k8s-watcher-operator/api/v1beta1
   version: v1beta1

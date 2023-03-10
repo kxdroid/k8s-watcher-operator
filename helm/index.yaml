@@ -1,0 +1,44 @@
+apiVersion: v1
+entries:
+  k8s-watcher-operator:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2023-03-10T21:19:40.701442793Z"
+    description: A Helm chart for Kubernetes
+    digest: d885f5c2c1c574522e376ae4aa2a4c16e93e1b5d6831d462810ac9e83bc84024
+    name: k8s-watcher-operator
+    type: application
+    urls:
+    - https://kxdroid.github.io/k8s-watcher-operator/k8s-watcher-operator-0.26.0.tgz
+    version: 0.26.0
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2023-03-10T21:19:40.695675377Z"
+    description: A Helm chart for Kubernetes
+    digest: d69225dd354947c9af4eaf80e6be5ad4f4376d27842ce152987a2d67e6fbcda0
+    name: k8s-watcher-operator
+    type: application
+    urls:
+    - https://kxdroid.github.io/k8s-watcher-operator/k8s-watcher-operator-0.25.0.tgz
+    version: 0.25.0
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2023-03-10T21:19:40.689487918Z"
+    description: A Helm chart for Kubernetes
+    digest: b0b7bfb52c6f9e9109a2af4ac00bd590594446c288b6954c303a65707a707525
+    name: k8s-watcher-operator
+    type: application
+    urls:
+    - https://kxdroid.github.io/k8s-watcher-operator/k8s-watcher-operator-0.24.0.tgz
+    version: 0.24.0
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2023-03-10T21:19:40.684266002Z"
+    description: A Helm chart for Kubernetes
+    digest: f84372d0b0b6f6215232d28731011b6158619b8b97dd442768eb428a7fe31d34
+    name: k8s-watcher-operator
+    type: application
+    urls:
+    - https://kxdroid.github.io/k8s-watcher-operator/k8s-watcher-operator-0.23.0.tgz
+    version: 0.23.0
+generated: "2023-03-10T21:19:40.664285002Z"

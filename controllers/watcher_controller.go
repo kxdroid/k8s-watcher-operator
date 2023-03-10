@@ -46,17 +46,17 @@ type WatcherReconciler struct {
 }
 
 // ServiceAccount needed to run informer job
-const ServiceAccount = "k1-ready"
+const ServiceAccount = "k8s-ready"
 
 // Namespace where the jobs will be excuted
 const Namespace = "default"
 
-//const Namespace = "k1-watcher"
+//const Namespace = "k8s-watcher"
 
-//+kubebuilder:rbac:groups=k1.kubefirst.io,resources=watchers,verbs=get;list;watch;create;update;patch;delete
+//+kubebuilder:rbac:groups=kxdroid.github.io,resources=watchers,verbs=get;list;watch;create;update;patch;delete
 //+kubebuilder:rbac:groups=batch,resources=jobs,verbs=get;list;watch;create;update;patch;delete
-//+kubebuilder:rbac:groups=k1.kubefirst.io,resources=watchers/status,verbs=get;update;patch
-//+kubebuilder:rbac:groups=k1.kubefirst.io,resources=watchers/finalizers,verbs=update
+//+kubebuilder:rbac:groups=kxdroid.github.io,resources=watchers/status,verbs=get;update;patch
+//+kubebuilder:rbac:groups=kxdroid.github.io,resources=watchers/finalizers,verbs=update
 
 // Reconcile is part of the main kubernetes reconciliation loop which aims to
 // move the current state of the cluster closer to the desired state.

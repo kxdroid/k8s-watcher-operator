@@ -3,12 +3,12 @@ shopt -s expand_aliases
 source  ~/.bash_profile
 
 export HERE=$PWD
-export CHART_NAME=docker-operator
+export CHART_NAME=k8s-watcher-operator
 export CHART_DIR=$PWD/helm/
-export PAGES_DOMAIN=6zacode-toolbox.github.io
+export PAGES_DOMAIN=kxdroid.github.io
 
 docker run --rm -it \
-    -v $PWD/operator:/go/src \
+    -v $PWD:/go/src \
     --platform linux/amd64 \
     -v $CHART_DIR:/chart \
     -w /go/src \

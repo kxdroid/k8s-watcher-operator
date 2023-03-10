@@ -1,4 +1,3 @@
----
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
@@ -18,7 +17,7 @@ rules:
   - update
   - watch
 - apiGroups:
-  - k1.kubefirst.io
+  - kxdroid.github.io
   resources:
   - watchers
   verbs:
@@ -30,13 +29,13 @@ rules:
   - update
   - watch
 - apiGroups:
-  - k1.kubefirst.io
+  - kxdroid.github.io
   resources:
   - watchers/finalizers
   verbs:
   - update
 - apiGroups:
-  - k1.kubefirst.io
+  - kxdroid.github.io
   resources:
   - watchers/status
   verbs:
