@@ -198,7 +198,7 @@ func createWatcherJob(crd *k1v1beta1.Watcher) (*v1batch.Job, error) {
 		Name:            "main",
 		Image:           image,
 		ImagePullPolicy: v1.PullAlways,
-		Command:         []string{"/usr/local/bin/kubefirst-watcher"},
+		Command:         []string{"/k8s-watcher"},
 		Args:            []string{"watcher", "--crd-api-version", crd.APIVersion, "--crd-namespace", crd.Namespace, "--crd-instance", crd.Name},
 	}
 	one = int32(1)
